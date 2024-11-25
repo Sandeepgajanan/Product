@@ -2,7 +2,6 @@
 
 import "./globals.css";
 import 'remixicon/fonts/remixicon.css';
-import { ReactLenis} from '@studio-freight/react-lenis'
 export default function RootLayout({
   children,
 }: {
@@ -10,7 +9,6 @@ export default function RootLayout({
 }) {
 
   return (
-    <ReactLenis root>
       <html lang="en">
         <head>
           <link
@@ -26,6 +24,6 @@ export default function RootLayout({
           {children}
         </body>
       </html>
-    </ReactLenis>
+
   );
 }
