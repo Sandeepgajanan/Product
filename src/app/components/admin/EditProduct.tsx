@@ -1,12 +1,12 @@
 "use client";
-import { useState, FormEvent } from "react";
+import { useState, FormEvent, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Sideheading from "@/app/components/user/Sideheading";
 import { products } from "@/app/constants";
 
-export default function EditProduct() {
-  const router = useRouter();
+function EditProductForm() {
   const searchParams = useSearchParams();
+  const router = useRouter();
   const productId = searchParams.get("id");
   const product = products.find((p) => p.id === Number(productId));
 
@@ -97,5 +97,13 @@ export default function EditProduct() {
         </form>
       </div>
     </div>
+  );
+}
+
+export default function EditProduct() {
+  return (
+    <Suspense fallback={<div className="ml-64 max-sm:ml-0 p-8 max-sm:p-4">Loading...</div>}>
+      <EditProductForm />
+    </Suspense>
   );
 }

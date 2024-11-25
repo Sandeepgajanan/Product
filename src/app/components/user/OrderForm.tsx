@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, FormEvent } from "react";
+import { useState, FormEvent, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { products } from "@/app/constants";
 import Link from "next/link";
@@ -13,7 +13,7 @@ interface OrderFormData {
   quantity: number;
 }
 
-const OrderForm = () => {
+function OrderFormContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const productId = searchParams.get("id");
@@ -168,6 +168,14 @@ const OrderForm = () => {
         </form>
       </div>
     </div>
+  );
+}
+
+const OrderForm = () => {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <OrderFormContent />
+    </Suspense>
   );
 };
 
