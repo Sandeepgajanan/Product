@@ -12,7 +12,7 @@ const Category = () => {
 
         <div className="flex flex-wrap items-center justify-center gap-20 max-sm:gap-4">
           {categories.map((category) => (
-            <Link href="/products" key={category.id}>
+            <Link href="/user/products" key={category.id}>
               <div className="flex flex-col items-center group">
                 <div
                   className={`${category.color} w-24 h-24 rounded-full flex items-center justify-center cursor-pointer border-4 border-zinc-800 max-sm:w-16 max-sm:h-16`}
